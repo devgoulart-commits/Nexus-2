@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Nexus Escolar | Sistema de Gestão Escolar</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0c1826">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nexus Escolar">
+<link rel="apple-touch-icon" id="apple-touch-icon-link" href="apple-touch-icon.png">
+<link rel="icon" id="favicon-link" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" id="favicon-link-16" type="image/png" sizes="16x16" href="favicon-16.png">
+
+<link rel="stylesheet" href="css/style.css">
+<script src="js/qrcode.lib.js"></script>
+</head>
+<body>
+
+<!-- ============ TELA DE LOGIN ============ -->
+<div id="tela-login" class="tela-login-v4">
+  <button type="button" id="btn-acessibilidade-login" class="login4-acessibilidade" title="Acessibilidade">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="1.8"/><path d="M4 8.5c3-1 13-1 16 0M12 8.5v6M8 20l2-6M16 20l-2-6M8 12.5l4 1.5 4-1.5"/></svg>
+  </button>
+
+  <div id="painel-acessibilidade-login" class="login4-painel-acessibilidade oculto">
+    <div class="login4-painel-cabeca">
+      <span data-i18n="acess.titulo">Acessibilidade</span>
+      <button type="button" id="fechar-acessibilidade-login">&times;</button>
+    </div>
+    <button type="button" id="acess-aumentar-fonte" data-i18n="acess.aumentarfonte">A+ Aumentar texto</button>
+    <button type="button" id="acess-diminuir-fonte" data-i18n="acess.diminuirfonte">A- Diminuir texto</button>
+    <button type="button" id="acess-contraste" data-i18n="acess.contraste">◐ Alto contraste</button>
+    <button type="button" id="btn-tema-login" title="Alternar modo escuro"><span id="icone-tema-login" class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></span> <span data-i18n="login.temaescuro">Tema escuro</span></button>
+  </div>
+
+  <button type="button" id="btn-libras-login" class="login4-libras" title="Libras (em breve)">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V6a2 2 0 0 1 4 0v5M12 11V4a2 2 0 0 1 4 0v7M16 11.5V6a2 2 0 0 1 4 0v9c0 3.5-2.5 6.5-6.5 6.5H12a6 6 0 0 1-5-2.7L4 14.8c-.6-.9-.3-1.9.5-2.4.8-.5 1.8-.3 2.4.4L8 14.5"/></svg>
+  </button>
+
+  <div class="login4-coluna-esq">
+    <div class="login4-formas" aria-hidden="true">
+      <svg viewBox="0 0 700 900" preserveAspectRatio="none">
+        <path d="M0,120 C220,20 260,260 460,180 C620,120 700,260 700,420 L700,900 L0,900 Z" fill="rgba(255,255,255,.08)"/>
+        <path d="M0,320 C180,260 320,480 560,380 C660,340 700,460 700,560 L700,900 L0,900 Z" fill="rgba(255,255,255,.10)"/>
+        <path d="M0,560 C160,520 300,700 520,640 C620,610 680,720 700,780 L700,900 L0,900 Z" fill="rgba(255,255,255,.14)"/>
+      </svg>
+    </div>
+
+    <div class="login5-topo">
+      <div class="login5-marca-esq">
+        <img class="logo-sige-img" alt="Nexus Escolar">
+        <span class="login3-marca-texto">NEXUS <b data-i18n="login3.marca.escolar">ESCOLAR</b></span>
+      </div>
+      <p class="login5-subtitulo" data-i18n="login5.subtitulo">Sistema de Gestão Acadêmica</p>
+      <h1 class="login5-slogan" data-i18n="login5.slogan">Mais tecnologia para uma <span>educação sem limites.</span></h1>
+
+      <div class="login5-recursos">
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></span>
+          <div><b data-i18n="login5.rec1.t">Matrículas e Rematrículas</b><span data-i18n="login5.rec1.d">Agilidade em todo o processo.</span></div>
+        </div>
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v3M16 4v3"/></svg></span>
+          <div><b data-i18n="login5.rec2.t">Cursos e Turmas</b><span data-i18n="login5.rec2.d">Organize sua grade curricular.</span></div>
+        </div>
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 4v5h5M8 13h8M8 17h5"/></svg></span>
+          <div><b data-i18n="login5.rec3.t">Acadêmico</b><span data-i18n="login5.rec3.d">Histórico, frequência e notas.</span></div>
+        </div>
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 14.5c2.6.3 4.5 2 4.5 5.5"/></svg></span>
+          <div><b data-i18n="login5.rec4.t">Secretaria</b><span data-i18n="login5.rec4.d">Processos mais eficientes.</span></div>
+        </div>
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.3 9.3c0-1.3 1.2-2.3 2.7-2.3s2.7.9 2.7 2.1c0 2.6-5.4 1.7-5.4 4.3 0 1.3 1.2 2.3 2.7 2.3s2.7-1 2.7-2.3"/></svg></span>
+          <div><b data-i18n="login5.rec5.t">Financeiro</b><span data-i18n="login5.rec5.d">Boletos, pagamentos e cobranças.</span></div>
+        </div>
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div><b data-i18n="login5.rec6.t">Segurança e Confiabilidade</b><span data-i18n="login5.rec6.d">Seus dados sempre protegidos.</span></div>
+        </div>
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+          <div><b data-i18n="login5.rec7.t">Relatórios</b><span data-i18n="login5.rec7.d">Informações estratégicas para sua gestão.</span></div>
+        </div>
+        <div class="login5-recurso">
+          <span class="login5-recurso-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10a6 6 0 1 0-11.3 2.8L3 20l5.5-1.4A6 6 0 0 0 18 10z"/></svg></span>
+          <div><b data-i18n="login5.rec8.t">Acesso em Qualquer Lugar</b><span data-i18n="login5.rec8.d">Web, desktop e mobile.</span></div>
+        </div>
+      </div>
+
+      <div class="login5-selos">
+        <div class="login5-selo"><span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/></svg></span><span data-i18n="login5.selo1.t">LGPD</span><small data-i18n="login5.selo1.d">Seus dados protegidos</small></div>
+        <div class="login5-selo"><span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.4-1.8A4.5 4.5 0 0 0 6.5 17"/></svg></span><span data-i18n="login5.selo2.t">100% Web</span><small data-i18n="login5.selo2.d">Acesse de onde quiser</small></div>
+        <div class="login5-selo"><span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1v-7h3M3 17v-6h3v7H5a2 2 0 0 1-2-2z"/></svg></span><span data-i18n="login5.selo3.t">Suporte Especializado</span><small data-i18n="login5.selo3.d">Sempre ao seu lado</small></div>
+      </div>
+    </div>
+
+    <div class="login4-rodape-inst">
+      <div class="login4-social">
+        <a href="#" title="Facebook" onclick="return false;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="#" title="YouTube" onclick="return false;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.9 3.6 12 3.6 12 3.6h0s-4.9 0-7.8.3c-.4 0-1.4.1-2.3 1C1.2 5.6 1 7.2 1 7.2S.8 9 .8 10.9v1.8C.8 14.6 1 16.4 1 16.4s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.3 7.6.3s4.9 0 7.8-.3c.4 0 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.8.2-3.7v-1.8c0-1.9-.2-3.7-.2-3.7zM9.7 14.6V8.6l6 3-6 3z"/></svg></a>
+        <a href="#" title="X" onclick="return false;"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.9 2H22l-7.2 8.2L23 22h-6.6l-5.2-6.8L5.2 22H2l7.7-8.8L1.4 2H8l4.7 6.2L18.9 2z"/></svg></a>
+        <a href="#" title="LinkedIn" onclick="return false;"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9-1.8 0-2 1.4-2 2.8V21H9z"/></svg></a>
+        <a href="#" title="Instagram" onclick="return false;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+        <a href="https://wa.me/5531983047290" target="_blank" rel="noopener" title="WhatsApp"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.5A10 10 0 1 0 12 2zm5.6 14.2c-.2.6-1.3 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 .9-2.3c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.5.6-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.9-.1 1.5z"/></svg></a>
+      </div>
+      <hr class="login4-divisor">
+      <div class="login4-legal">
+        <a href="https://wa.me/5531983047290" target="_blank" rel="noopener" data-i18n="login4.faleconosco">Fale conosco</a>
+        <span>·</span>
+        <a href="#" onclick="return false;" data-i18n="login4.termos">Termos de uso</a>
+      </div>
+      <p class="login4-copyright">Copyright ©2026 <b>Grupo FredTech Systems</b> · <span data-i18n="login.direitos">Todos os direitos reservados</span></p>
+    </div>
+  </div>
+
+  <div class="login4-coluna-dir">
+    <div class="login4-form-wrap">
+      <div class="login4-marca">
+        <img class="logo-sige-img" alt="Nexus Escolar SGE">
+        <span class="login3-marca-texto">NEXUS <b data-i18n="login3.marca.escolar">ESCOLAR</b><small>SGE</small></span>
+      </div>
+
+      <h2 class="login5-boasvindas" data-i18n="login5.boasvindas">Bem-vindo(a) ao <span data-i18n="login5.boasvindas.nome">Nexus Escolar</span></h2>
+      <p class="login5-boasvindas-sub" data-i18n="login5.boasvindas.sub">Faça seu login para acessar o sistema e gerenciar sua instituição de ensino.</p>
+
+      <p id="login-erro" class="login-erro oculto" data-i18n="login.erro">Informe usuário e senha para continuar.</p>
+
+      <form id="form-login" class="login4-form">
+        <div class="login4-campo login4-campo-com-icone">
+          <span class="login4-campo-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1-4 4-6 7.5-6s6.5 2 7.5 6"/></svg></span>
+          <input type="text" id="login-usuario" placeholder="Usuário" data-i18n-placeholder="login4.usuario.placeholder" autocomplete="username">
+        </div>
+        <div class="login4-campo login4-campo-com-icone login4-campo-senha">
+          <span class="login4-campo-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg></span>
+          <input type="password" id="login-senha" placeholder="Senha" data-i18n-placeholder="login.senha" autocomplete="current-password">
+          <button type="button" id="btn-mostrar-senha" class="login-olho hero-ico" title="Mostrar/ocultar senha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        </div>
+
+        <div class="login5-linha-opcoes">
+          <label class="login5-lembrar"><input type="checkbox" id="login-lembrar" checked> <span data-i18n="login5.lembrar">Lembrar de mim</span></label>
+          <a href="#" id="link-esqueci-senha" class="login4-link-esqueci" data-i18n="login.esqueceu">Esqueceu sua senha?</a>
+        </div>
+
+        <button type="submit" id="btn-entrar-login" class="login4-btn-acessar" data-i18n="login4.acessar">Entrar</button>
+      </form>
+
+      <div class="login5-divisor-ou"><span data-i18n="login5.ou">ou</span></div>
+
+      <div class="login5-social-login">
+        <button type="button" class="login5-btn-social" onclick="mostrarToast(t('login5.toast.social'))">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.4H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.1-4 1.1-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.4 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.6H1.4C.5 8.3 0 10.1 0 12s.5 3.7 1.4 5.4l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l4 3.1C6.3 6.9 8.9 4.8 12 4.8z"/></svg>
+          <span data-i18n="login5.google">Entrar com o Google</span>
+        </button>
+        <button type="button" class="login5-btn-social" onclick="mostrarToast(t('login5.toast.social'))">
+          <svg viewBox="0 0 24 24" width="18" height="18"><rect x="1" y="1" width="10" height="10" fill="#F35325"/><rect x="13" y="1" width="10" height="10" fill="#81BC06"/><rect x="1" y="13" width="10" height="10" fill="#05A6F0"/><rect x="13" y="13" width="10" height="10" fill="#FFBA08"/></svg>
+          <span data-i18n="login5.microsoft">Entrar com a Microsoft</span>
+        </button>
+      </div>
+
+      <button type="button" class="login5-inst-box" onclick="mostrarToast(t('login5.toast.inst'))">
+        <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6M4 21h16"/></svg></span>
+        <span class="login5-inst-txt"><b data-i18n="login5.inst.t">Acesso para Instituições</b><small data-i18n="login5.inst.d">Acesse com seu código de instituição.</small></span>
+        <span class="hero-ico login5-inst-seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <p class="login3-fale-admin"><span data-i18n="login3.naotemconta">Não tem uma conta?</span> <a href="https://wa.me/5531983047290" target="_blank" rel="noopener" data-i18n="login3.faleadmin">Fale com o administrador</a></p>
+
+      <div class="login4-rodape-form">
+        <select id="idioma-login" class="login4-idioma">
+          <option value="pt">Português - Brasil (pt_br)</option>
+          <option value="en">English - US (en_us)</option>
+          <option value="es">Español (es)</option>
+        </select>
+        <button type="button" id="btn-aviso-cookies" class="login4-btn-cookies" data-i18n="login4.avisocookies">Aviso de Cookies</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="banner-cookies" class="login4-banner-cookies oculto">
+    <p data-i18n="login4.cookies.texto">Usamos cookies essenciais para o funcionamento do sistema e para lembrar suas preferências de acesso. Não utilizamos cookies de rastreamento publicitário.</p>
+    <button type="button" id="btn-cookies-ok" data-i18n="login4.cookies.ok">Entendi</button>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app" class="app oculto">
+
+  <!-- Fundo escurecido atrás do menu quando ele abre em telas pequenas -->
+  <div id="sidebar-backdrop" class="sidebar-backdrop oculto"></div>
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-topo">
+      <img class="logo-sige-img sidebar-logo" alt="Nexus Escolar">
+      <div class="sidebar-titulo">
+        <strong>Nexus Escolar</strong>
+        <span data-i18n="sidebar.subtitulo">Gestão Escolar</span>
+        <span id="sidebar-unidade" class="sidebar-unidade"></span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebar-nav">
+      <button class="nav-item nav-item-principal ativo" data-view="dashboard" title="Principal">
+        <span class="nav-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-9"/><path d="M9.5 20v-6h5v6"/></svg></span>
+        <span class="nav-texto" data-i18n="nav.principal">Principal</span>
+      </button>
+
+      <div class="nav-grupo" data-grupo="academico">
+        <button class="nav-grupo-cab nav-grupo-cab-aberto" type="button" data-toggle-grupo="academico">
+          <span class="nav-grupo-icone nav-grupo-icone-azul hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M3 12l9 4.5 9-4.5M3 16.5l9 4.5 9-4.5"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.academico">Gestão Acadêmica</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens" data-grupo-itens="academico">
+          <button class="nav-item nav-subitem" data-view="alunos" title="Alunos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.alunos">Alunos</span></button>
+          <button class="nav-item nav-subitem" data-view="professores" title="Professores"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.professores">Professores</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="cursos" title="Cursos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.cursos">Cursos</span></button>
+          <button class="nav-item nav-subitem" data-view="turmas" title="Turmas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.turmas">Turmas</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="disciplinas" title="Disciplinas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.disciplinas">Disciplinas</span></button>
+          <button class="nav-item nav-subitem" data-view="matriculas" title="Matrículas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.matriculasativas">Matrículas</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="notas" title="Avaliações"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.avaliacoes">Avaliações</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="frequencia" title="Frequência"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.frequencia">Frequência</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="calendarioescolar" title="Calendário Acadêmico"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.calendarioacademico">Calendário Acadêmico</span></button>
+        </div>
+      </div>
+
+      <div class="nav-grupo" data-grupo="portais">
+        <button class="nav-grupo-cab" type="button" data-toggle-grupo="portais">
+          <span class="nav-grupo-icone nav-grupo-icone-verde hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.portais">Portais</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens nav-grupo-fechado" data-grupo-itens="portais">
+          <button class="nav-item nav-subitem" data-view="portal-aluno" title="Portal do Aluno"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.portaldoaluno">Portal do Aluno</span></button>
+          <button class="nav-item nav-subitem" data-view="portal-professor" title="Portal do Professor"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.portaldoprofessor">Portal do Professor</span></button>
+        </div>
+      </div>
+
+      <div class="nav-grupo" data-grupo="secretaria">
+        <button class="nav-grupo-cab" type="button" data-toggle-grupo="secretaria">
+          <span class="nav-grupo-icone nav-grupo-icone-laranja hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.secretaria">Secretaria</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens nav-grupo-fechado" data-grupo-itens="secretaria">
+          <button class="nav-item nav-subitem" data-view="pdv" title="Nova Matrícula"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.novamatricula">Nova Matrícula</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="prematricula" title="Pré-matrícula"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.prematricula">Pré-matrícula</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="remanejamentos" title="Remanejamentos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.remanejamentos">Remanejamentos</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="transferencias" title="Transferências"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.transferencias">Transferências</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="responsaveis" title="Responsáveis"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.responsaveis">Responsáveis</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="funcionarios" title="Funcionários"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.funcionarios">Funcionários</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="diario" title="Diário de Classe"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.diario">Diário de Classe</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="boletins" title="Boletins"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.boletins">Boletins</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="anoletivo" title="Ano Letivo"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.anoletivo">Ano Letivo</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="salas" title="Salas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.salas">Salas</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="turnos" title="Turnos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.turnos">Turnos</span></button>
+          <button class="nav-item nav-subitem" data-view="documentos" data-doctipo="historico" title="Histórico Escolar"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.historicoescolar">Histórico Escolar</span></button>
+          <button class="nav-item nav-subitem" data-view="documentos" data-doctipo="declaracao" title="Declarações"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.declaracoes">Declarações</span></button>
+          <button class="nav-item nav-subitem" data-view="documentos" data-doctipo="certificado" title="Certificados"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.certificados">Certificados</span></button>
+          <button class="nav-item nav-subitem" data-view="documentos" data-doctipo="ficha" title="Ficha Individual"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.fichaindividual">Ficha Individual</span></button>
+          <button class="nav-item nav-subitem" data-view="dados" title="Dados da Escola"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.dadosescola">Dados da Escola</span></button>
+        </div>
+      </div>
+
+      <div class="nav-grupo" data-grupo="financeiro">
+        <button class="nav-grupo-cab" type="button" data-toggle-grupo="financeiro">
+          <span class="nav-grupo-icone nav-grupo-icone-verde hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.3 9.3c0-1.3 1.2-2.3 2.7-2.3s2.7.9 2.7 2.1c0 2.6-5.4 1.7-5.4 4.3 0 1.3 1.2 2.3 2.7 2.3s2.7-1 2.7-2.3"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.financeiro">Financeiro</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens nav-grupo-fechado" data-grupo-itens="financeiro">
+          <button class="nav-item nav-subitem" data-view="financeiro" data-fintab="pdv" title="PDV / Caixa"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.pdvcaixa">PDV / Caixa</span></button>
+          <button class="nav-item nav-subitem" data-view="financeiro" data-fintab="mensalidades" title="Mensalidades"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.mensalidades">Mensalidades</span></button>
+          <button class="nav-item nav-subitem" data-view="financeiro" data-fintab="receitas" title="Receitas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.receitas">Receitas</span></button>
+          <button class="nav-item nav-subitem" data-view="financeiro" data-fintab="despesas" title="Despesas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.despesas">Despesas</span></button>
+          <button class="nav-item nav-subitem" data-view="financeiro" data-fintab="inadimplencia" title="Inadimplência"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.inadimplencia">Inadimplência</span></button>
+          <button class="nav-item nav-subitem" data-view="valores" title="Valores dos Cursos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.valores">Valores dos Cursos</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" title="Relatórios Financeiros"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.relatoriosfinanceiros">Relatórios Financeiros</span></button>
+        </div>
+      </div>
+
+      <div class="nav-grupo" data-grupo="comunicacao">
+        <button class="nav-grupo-cab" type="button" data-toggle-grupo="comunicacao">
+          <span class="nav-grupo-icone nav-grupo-icone-roxo hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.comunicacao">Comunicação</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens nav-grupo-fechado" data-grupo-itens="comunicacao">
+          <button class="nav-item nav-subitem" data-view="atendimento" title="Central de Atendimento"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.atendimento">Central de Atendimento</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="comunicados" title="Comunicados"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.comunicados">Comunicados</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="avisos" title="Avisos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.avisos">Avisos</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="mensagens" title="Mensagens"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.mensagens">Mensagens</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="notificacoes" title="Notificações"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.notificacoes">Notificações</span></button>
+        </div>
+      </div>
+
+      <div class="nav-grupo" data-grupo="relatorios">
+        <button class="nav-grupo-cab" type="button" data-toggle-grupo="relatorios">
+          <span class="nav-grupo-icone nav-grupo-icone-azul2 hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V10M10 19V4M16 19v-7M22 19H2"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.relatorios">Relatórios e BI</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens nav-grupo-fechado" data-grupo-itens="relatorios">
+          <button class="nav-item nav-subitem" data-view="bi" title="BI Educacional"><span class="nav-dot"></span><span class="nav-texto">BI Educacional</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" title="Acadêmicos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.relacademicos">Acadêmicos</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" title="Frequência"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.relfrequencia">Frequência</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" title="Notas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.relnotas">Notas</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" title="Matrículas"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.relmatriculas">Matrículas</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" title="Financeiros"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.relatoriosfinanceiros">Financeiros</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" data-relatorio-alvo="situacao" title="Ata de Resultados"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.ataresultados">Ata de Resultados</span></button>
+          <button class="nav-item nav-subitem" data-view="relatorios" title="Documentos"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.reldocumentos">Documentos</span></button>
+        </div>
+      </div>
+
+      <div class="nav-grupo" data-grupo="multiunidade">
+        <button class="nav-grupo-cab" type="button" data-toggle-grupo="multiunidade">
+          <span class="nav-grupo-icone nav-grupo-icone-verde hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v15"/><path d="M14 21V10a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11"/><path d="M8 8h0M8 12h0M8 16h0M18 13h0M18 17h0"/><path d="M2 21h20"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.multiunidade">Multiunidade</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens nav-grupo-fechado" data-grupo-itens="multiunidade">
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="unidades" title="Sede e Filiais"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.unidades">Sede e Filiais</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="usuarios" title="Usuários por Unidade"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.usuariosunidade">Usuários por Unidade</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="permissoes" title="Permissões por Função"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.permissoesfuncao">Permissões por Função</span></button>
+        </div>
+      </div>
+
+      <div class="nav-grupo" data-grupo="administracao">
+        <button class="nav-grupo-cab" type="button" data-toggle-grupo="administracao">
+          <span class="nav-grupo-icone nav-grupo-icone-laranja2 hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span>
+          <span class="nav-grupo-nome" data-i18n="sidebar.grupo.administracao">Configurações</span>
+          <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="nav-grupo-itens nav-grupo-fechado" data-grupo-itens="administracao">
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="usuarios" title="Usuários"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.usuarios">Usuários</span></button>
+          <button class="nav-item nav-subitem" data-view="generico" data-modulo="permissoes" title="Permissões"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.permissoes">Permissões</span></button>
+          <button class="nav-item nav-subitem" data-view="auditoria" title="Auditoria de Ações"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.auditoria">Auditoria de Ações</span></button>
+          <button class="nav-item nav-subitem" data-view="sessoes" title="Controle de Sessões"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.sessoes">Controle de Sessões</span></button>
+          <button class="nav-item nav-subitem" data-view="dados" title="Dados do Sistema"><span class="nav-dot"></span><span class="nav-texto" data-i18n="nav.dados">Dados do Sistema</span></button>
+        </div>
+      </div>
+    </nav>
+
+    <button id="btn-instalar-app" type="button" class="btn-instalar-app oculto" title="Instalar Nexus Escolar">
+      <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>
+      <span class="nav-texto" data-i18n="sidebar.instalarapp">Instalar app</span>
+    </button>
+
+    <button id="btn-recolher-menu" class="btn-recolher-menu" title="Esconder menu">
+      <span id="icone-recolher">«</span> <span class="nav-texto" data-i18n="sidebar.esconder">Esconder menu</span>
+    </button>
+
+    <div class="sidebar-rodape">
+      <button type="button" class="sidebar-usuario-card" id="sidebar-usuario-card">
+        <div class="avatar-mini" id="avatar-mini-sidebar">SP</div>
+        <div class="sidebar-usuario-info">
+          <strong id="usuario-nome-sidebar">Secretaria Escolar</strong>
+          <span class="sidebar-usuario-unidade"><span data-i18n="sidebar.unidade">Unidade:</span> <b id="sidebar-unidade-nome">Sede</b></span>
+        </div>
+        <span class="nav-grupo-seta hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      </button>
+      <button type="button" id="btn-sair-sidebar" class="sidebar-sair">
+        <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></span>
+        <span data-i18n="sidebar.sair">Sair</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="conteudo">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-esquerda">
+        <button id="btn-abrir-menu" class="btn-icone btn-abrir-menu oculto" title="Mostrar menu">☰</button>
+        <div>
+          <h2 id="topbar-titulo">Painel BI</h2>
+          <span id="topbar-sub" class="topbar-sub">Visão geral das matrículas e programas</span>
+        </div>
+      </div>
+      <div class="topbar-busca-wrap">
+        <span class="topbar-busca-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <input type="text" id="topbar-busca" class="topbar-busca" placeholder="Buscar aluno, matrícula, curso, disciplina, documento...">
+      </div>
+      <div class="topbar-acoes">
+        <button type="button" id="btn-tema-app" class="btn-tema" title="Alternar modo escuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></button>
+        <select id="idioma-app" class="seletor-idioma seletor-idioma-topo">
+          <option value="pt">🇧🇷 PT</option>
+          <option value="en">🇺🇸 EN</option>
+          <option value="es">🇪🇸 ES</option>
+        </select>
+        <select id="seletor-unidade" class="seletor-idioma seletor-unidade oculto">
+          <option value="todas">Todas as unidades</option>
+          <option value="bhsede">Belo Horizonte - Filial Centro</option>
+          <option value="bhfilial">Belo Horizonte - Filial Pampulha</option>
+          <option value="contagem1">Contagem - Sede</option>
+          <option value="contagem2">Contagem - Filial Riacho</option>
+          <option value="betim">Betim - Filial</option>
+        </select>
+        <span class="chip-data chip-unidade" id="chip-unidade"></span>
+        <span class="chip-data" id="data-hoje"></span>
+        <span class="chip-data chip-hora" id="chip-hora">🕐 --:--</span>
+        <div class="notif-wrap">
+          <button type="button" id="btn-suporte" class="btn-icone" title="Suporte: (31) 98304-7290">
+            <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.7-2.5 2-2.5 4"/><path d="M12 17h.01"/></svg></span>
+          </button>
+          <div class="notif-painel oculto" id="painel-suporte">
+            <div class="notif-painel-cabeca"><span>Central de Suporte</span></div>
+            <div class="suporte-conteudo">
+              <p>Precisa de ajuda com o sistema? Fale com a nossa equipe:</p>
+              <a href="https://wa.me/5531983047290" target="_blank" rel="noopener" class="suporte-telefone suporte-whatsapp">
+                <span class="hero-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1s-.6.8-.7.9-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.6c-.1-.2 0-.3.1-.4l.3-.4.2-.3a.5.5 0 0 0 0-.5c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c.6.2 1 .4 1.4.5a3.4 3.4 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg></span>
+                WhatsApp: +55 31 98304-7290
+              </a>
+              <a href="tel:+5531983047290" class="suporte-telefone">
+                <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2z"/></svg></span>
+                Ligar: +55 31 98304-7290
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="notif-wrap">
+          <button type="button" id="btn-ia-topbar" class="btn-icone" title="Assistente Nexus">
+            <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a5 5 0 0 1 5 5v2a5 5 0 0 1-10 0V8a5 5 0 0 1 5-5z"/><path d="M8 13v2a4 4 0 0 0 8 0v-2M5 21a7 7 0 0 1 14 0"/><circle cx="9.5" cy="9" r="1"/><circle cx="14.5" cy="9" r="1"/></svg></span>
+          </button>
+        </div>
+        <div class="usuario-mini">
+          <div class="avatar-mini" id="avatar-mini">SP</div>
+          <div>
+            <strong id="usuario-nome-topo">Secretaria Escolar</strong>
+            <span id="usuario-perfil-topo" data-i18n="topo.admin">Admin Nexus Tech</span>
+          </div>
+        </div>
+        <button id="btn-sair" class="btn-icone" title="Sair">⏻</button>
+      </div>
+    </header>
+
+    <!-- ===================== VIEW: DASHBOARD ===================== -->
+    <section id="view-dashboard" class="view">
+
+      <!-- Ticker de novidades: roda continuamente no topo do painel -->
+      <div class="ticker-novidades" id="ticker-novidades" onclick="irParaView('novidades')" title="Ver todas as novidades">
+        <span class="ticker-etiqueta" data-i18n="nav.novidades">Novidades</span>
+        <span class="notif-aovivo ticker-aovivo"><span class="ponto-aovivo"></span>AO VIVO</span>
+        <div class="ticker-trilho">
+          <div class="ticker-conteudo" id="ticker-novidades-conteudo"></div>
+        </div>
+      </div>
+
+      <div class="dashboard-atualizacao">
+        <span class="ponto-aovivo"></span>
+        <span data-i18n="dash.atualizadoemtemporeal">Painel atualizado em tempo real</span>
+        <span>·</span>
+        <span data-i18n="dash.ultimaatualizacao">Última atualização:</span>
+        <b id="dash-ultima-atualizacao">--:--:--</b>
+      </div>
+
+      <div class="dash-banner">
+        <div class="dash-banner-boasvindas">
+          <span class="dash-banner-etiqueta" data-i18n="dash.banner.etiqueta">Bem-vindo(a) ao</span>
+          <h1 class="dash-banner-titulo">Nexus <b data-i18n="login3.marca.escolar">Escolar</b></h1>
+          <p class="dash-banner-sub" data-i18n="dash.banner.sub">Sistema de Gestão Acadêmica</p>
+          <p class="dash-banner-desc" data-i18n="dash.banner.desc">Tecnologia, organização e eficiência para uma educação de mais qualidade.</p>
+        </div>
+        <div class="dash-banner-relogio">
+          <span class="hero-ico dash-banner-relogio-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span>
+          <div class="dash-banner-relogio-txt">
+            <span id="banner-data-extenso">--</span>
+            <strong id="banner-hora">--:--</strong>
+          </div>
+          <p class="dash-banner-frase" id="banner-frase">"Grandes conquistas começam com uma boa gestão."</p>
+        </div>
+      </div>
+
+      <div class="painel painel-acesso-rapido">
+        <div class="painel-cabeca">
+          <h3 data-i18n="dash.acessorapido">Acesso Rápido</h3>
+        </div>
+        <div class="dash-acesso-rapido-grid">
+          <button type="button" class="dash-acesso-item" onclick="irParaView('matriculas')">
+            <span class="dash-acesso-ico dash-acesso-ico-azul hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 4v5h5M9 13l2 2 4-4"/></svg></span>
+            <span data-i18n="nav.matriculas">Matrículas</span>
+          </button>
+          <button type="button" class="dash-acesso-item" onclick="irParaView('financeiro')">
+            <span class="dash-acesso-ico dash-acesso-ico-verde hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.3 9.3c0-1.3 1.2-2.3 2.7-2.3s2.7.9 2.7 2.1c0 2.6-5.4 1.7-5.4 4.3 0 1.3 1.2 2.3 2.7 2.3s2.7-1 2.7-2.3"/></svg></span>
+            <span data-i18n="dash.financeiro">Financeiro</span>
+          </button>
+          <button type="button" class="dash-acesso-item" onclick="irParaView('alunos')">
+            <span class="dash-acesso-ico dash-acesso-ico-roxo hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 4v5h5M8 13h8M8 17h5"/></svg></span>
+            <span data-i18n="dash.historicoescolar">Histórico Escolar</span>
+          </button>
+          <button type="button" class="dash-acesso-item" onclick="irParaView('documentos')">
+            <span class="dash-acesso-ico dash-acesso-ico-ambar hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>
+            <span data-i18n="nav.documentos">Declarações</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-azul">
+          <div class="kpi-topo">
+            <span class="kpi-label" data-i18n="kpi.total">Total de Alunos</span>
+            <span class="kpi-icone kpi-icone-azul hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 14.5c2.6.3 4.5 2 4.5 5.5"/></svg></span>
+          </div>
+          <span class="kpi-valor" id="kpi-total">0</span>
+          <span class="kpi-nota" data-i18n="kpi.total.nota">Base cadastral ativa</span>
+        </div>
+        <div class="kpi-card kpi-verde">
+          <div class="kpi-topo">
+            <span class="kpi-label" data-i18n="kpi.ativos">Matrículas Ativas</span>
+            <span class="kpi-icone kpi-icone-verde hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 13l2 2 4-4"/></svg></span>
+          </div>
+          <span class="kpi-valor" id="kpi-ativos">0</span>
+          <span class="kpi-nota" id="kpi-ativos-pct">0% do total</span>
+        </div>
+        <div class="kpi-card kpi-ambar" id="kpi-card-menores">
+          <div class="kpi-topo">
+            <span class="kpi-label" data-i18n="kpi.menores">Alunos Menores de Idade</span>
+            <span class="kpi-icone kpi-icone-ambar hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3-6.2 7-6.2s7 2.2 7 6.2"/></svg></span>
+          </div>
+          <span class="kpi-valor" id="kpi-menores">0</span>
+          <span class="kpi-nota" data-i18n="kpi.menores.nota">Com responsável cadastrado</span>
+        </div>
+        <div class="kpi-card kpi-roxo">
+          <div class="kpi-topo">
+            <span class="kpi-label" data-i18n="kpi.concluidos">Concluintes</span>
+            <span class="kpi-icone kpi-icone-roxo hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M21 8v6"/></svg></span>
+          </div>
+          <span class="kpi-valor" id="kpi-concluidos">0</span>
+          <span class="kpi-nota" data-i18n="kpi.concluidos.nota">Certificados emitidos</span>
+        </div>
+        <div class="kpi-card kpi-receita">
+          <div class="kpi-topo">
+            <span class="kpi-label" data-i18n="kpi.receitames">Receita do Mês</span>
+            <span class="kpi-icone kpi-icone-receita hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.3 9.3c0-1.3 1.2-2.3 2.7-2.3s2.7.9 2.7 2.1c0 2.6-5.4 1.7-5.4 4.3 0 1.3 1.2 2.3 2.7 2.3s2.7-1 2.7-2.3"/></svg></span>
+          </div>
+          <span class="kpi-valor" id="kpi-receitames">R$ 0</span>
+          <span class="kpi-nota" data-i18n="kpi.receitames.nota">Pagamentos confirmados no mês</span>
+        </div>
+        <div class="kpi-card kpi-inadimplencia">
+          <div class="kpi-topo">
+            <span class="kpi-label" data-i18n="kpi.inadimplencia">Inadimplência</span>
+            <span class="kpi-icone kpi-icone-inadimplencia hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.6 17.5a1.8 1.8 0 0 0 1.6 2.7h15.6a1.8 1.8 0 0 0 1.6-2.7L13.7 3.9a1.8 1.8 0 0 0-3.4 0z"/></svg></span>
+          </div>
+          <span class="kpi-valor" id="kpi-inadimplencia">R$ 0</span>
+          <span class="kpi-nota" id="kpi-inadimplencia-nota" data-i18n="kpi.inadimplencia.nota">Mensalidades em atraso</span>
+        </div>
+      </div>
+
+      <div class="bi-grid">
+        <div class="painel painel-categorias">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.categorias">Matrículas por Categoria de Curso</h3>
+            <span class="painel-tag" data-i18n="bi.categorias.tag">Bacharelado · Licenciatura · Tecnólogo · Pós-Graduação</span>
+          </div>
+          <div id="grafico-categorias" class="grafico"></div>
+        </div>
+
+        <div class="painel painel-status">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.status">Situação da Matrícula</h3>
+          </div>
+          <div id="grafico-status" class="grafico"></div>
+        </div>
+
+        <div class="painel painel-evolucao">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.evolucao">Evolução de Matrículas (últimos 12 meses)</h3>
+          </div>
+          <div id="grafico-evolucao" class="grafico"></div>
+        </div>
+
+        <div class="painel painel-cursos">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.cursos">Top 6 Cursos por Nº de Alunos</h3>
+          </div>
+          <div id="grafico-cursos" class="grafico"></div>
+        </div>
+
+        <div class="painel painel-turmas">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.idade">Distribuição por Faixa Etária</h3>
+          </div>
+          <div id="grafico-idade" class="grafico"></div>
+        </div>
+
+        <div class="painel painel-recentes">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.recentes">Matrículas Recentes</h3>
+          </div>
+          <div class="tabela-wrap">
+            <table class="tabela-mini">
+              <thead><tr>
+                <th data-i18n="tabela.aluno">Aluno</th>
+                <th data-i18n="tabela.curso">Curso</th>
+                <th data-i18n="tabela.data">Data</th>
+              </tr></thead>
+              <tbody id="tabela-recentes"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="painel painel-atividades">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.atividades">Atividades Recentes</h3>
+            <span class="notif-aovivo"><span class="ponto-aovivo"></span>AO VIVO</span>
+          </div>
+          <div class="lista-atividades" id="lista-atividades-dashboard"></div>
+        </div>
+
+        <div class="painel painel-eventos">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.eventos">Próximos Eventos</h3>
+          </div>
+          <div class="lista-eventos" id="lista-eventos-dashboard"></div>
+        </div>
+
+        <div class="painel painel-comunicados">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.comunicadosrecentes">Comunicados Recentes</h3>
+          </div>
+          <div id="dash-comunicados"></div>
+        </div>
+
+        <div class="painel painel-inadimplencia-faixas">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.inadimplenciafaixas">Inadimplência por Faixa de Atraso</h3>
+          </div>
+          <div id="grafico-dash-inadimplencia" class="grafico"></div>
+        </div>
+
+        <div class="painel painel-gauge-ocupacao">
+          <div class="painel-cabeca">
+            <h3 data-i18n="bi.ocupacaoturmas.gauge">Ocupação das Turmas</h3>
+          </div>
+          <div id="gauge-dash-ocupacao"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: ALUNOS ===================== -->
+    <section id="view-alunos" class="view oculto">
+      <div class="painel">
+        <div class="filtros-barra">
+          <input type="text" id="busca-aluno" data-i18n-placeholder="alunos.busca" placeholder="Buscar por nome, matrícula ou responsável...">
+          <select id="filtro-categoria">
+            <option value="" data-i18n="filtro.todascategorias">Todas as categorias</option>
+            <option value="Bacharelado" data-i18n="cat.aperfeicoamento">Bacharelado</option>
+            <option value="Licenciatura" data-i18n="cat.aprendizagem">Licenciatura</option>
+            <option value="Tecnólogo" data-i18n="cat.tecnico">Tecnólogo</option>
+            <option value="Pós-Graduação" data-i18n="cat.qualificacao">Pós-Graduação</option>
+          </select>
+          <select id="filtro-status">
+            <option value="" data-i18n="filtro.todassituacoes">Todas as situações</option>
+            <option value="Ativo" data-i18n="status.ativo">Ativo</option>
+            <option value="Concluído" data-i18n="status.concluido">Concluído</option>
+            <option value="Trancado" data-i18n="status.trancado">Trancado</option>
+            <option value="Evadido" data-i18n="status.evadido">Evadido</option>
+          </select>
+          <select id="filtro-menor">
+            <option value="" data-i18n="filtro.todos">Todos</option>
+            <option value="sim" data-i18n="filtro.somentemenores">Somente menores de idade</option>
+            <option value="nao" data-i18n="filtro.somentemaiores">Somente maiores de idade</option>
+          </select>
+          <button class="btn btn-primario" id="btn-novo-aluno" data-i18n="alunos.novo">+ Novo Aluno</button>
+          <button class="btn btn-outline" id="btn-exportar-csv" data-i18n="alunos.exportarcsv">Exportar CSV</button>
+        </div>
+
+        <div class="tabela-wrap">
+          <table class="tabela-principal">
+            <thead>
+              <tr>
+                <th data-i18n="tabela.matricula">Matrícula</th>
+                <th data-i18n="tabela.nome">Nome</th>
+                <th data-i18n="tabela.idade">Idade</th>
+                <th data-i18n="tabela.categoria">Categoria</th>
+                <th data-i18n="tabela.curso">Curso</th>
+                <th data-i18n="tabela.turma">Turma</th>
+                <th data-i18n="tabela.situacao">Situação</th>
+                <th data-i18n="tabela.responsavel">Responsável</th>
+                <th data-i18n="tabela.acoes">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-alunos"></tbody>
+          </table>
+        </div>
+
+        <div class="paginacao" id="paginacao"></div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: MATRICULAS ===================== -->
+    <section id="view-matriculas" class="view oculto">
+      <div class="bi-grid bi-grid-2">
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="cat.aprendizagem">Licenciatura</h3><span class="painel-tag" data-i18n="mat.aprendizagem.tag">Formação de professores</span></div>
+          <div id="resumo-aprendizagem" class="resumo-categoria"></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="cat.aperfeicoamento">Bacharelado</h3><span class="painel-tag" data-i18n="mat.aperfeicoamento.tag">Graduação plena</span></div>
+          <div id="resumo-aperfeicoamento" class="resumo-categoria"></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="cat.tecnico">Tecnólogo</h3><span class="painel-tag" data-i18n="mat.tecnico.tag">Formação tecnológica</span></div>
+          <div id="resumo-tecnico" class="resumo-categoria"></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="cat.qualificacao">Pós-Graduação</h3><span class="painel-tag" data-i18n="mat.qualificacao.tag">Lato sensu</span></div>
+          <div id="resumo-qualificacao" class="resumo-categoria"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: PROFESSORES ===================== -->
+    <section id="view-professores" class="view oculto">
+      <div class="painel">
+        <div class="filtros-barra">
+          <input type="text" id="busca-professor" placeholder="Buscar por nome, e-mail ou disciplina...">
+          <select id="filtro-professor-categoria">
+            <option value="">Todas as categorias</option>
+            <option value="Bacharelado">Bacharelado</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Tecnólogo">Tecnólogo</option>
+            <option value="Pós-Graduação">Pós-Graduação</option>
+          </select>
+          <select id="filtro-professor-status">
+            <option value="">Todas as situações</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+          <button class="btn btn-primario" id="btn-novo-professor">+ Novo Professor</button>
+        </div>
+        <div class="tabela-wrap">
+          <table class="tabela-principal">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Formação</th>
+                <th>Categoria</th>
+                <th>Disciplina/Curso</th>
+                <th>Turmas</th>
+                <th>Contato</th>
+                <th>Situação</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-professores"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: TURMAS ===================== -->
+    <section id="view-turmas" class="view oculto">
+      <div class="painel">
+        <div class="filtros-barra">
+          <input type="text" id="busca-turma" placeholder="Buscar por código da turma, curso ou professor...">
+          <select id="filtro-turma-categoria">
+            <option value="">Todas as categorias</option>
+            <option value="Bacharelado">Bacharelado</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Tecnólogo">Tecnólogo</option>
+            <option value="Pós-Graduação">Pós-Graduação</option>
+          </select>
+          <select id="filtro-turma-turno">
+            <option value="">Todos os turnos</option>
+            <option value="Manhã">Manhã</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noite">Noite</option>
+          </select>
+          <button class="btn btn-primario" id="btn-nova-turma">+ Nova Turma</button>
+        </div>
+        <div class="tabela-wrap">
+          <table class="tabela-principal">
+            <thead>
+              <tr>
+                <th>Turma</th>
+                <th>Curso</th>
+                <th>Categoria</th>
+                <th>Professor</th>
+                <th>Turno / Horário</th>
+                <th>Sala</th>
+                <th>Matriculados</th>
+                <th>Vagas</th>
+                <th>Unidade</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-turmas"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: VALORES DOS CURSOS ===================== -->
+    <section id="view-valores" class="view oculto">
+      <div class="painel">
+        <div class="painel-cabeca">
+          <h3>Valores dos Cursos</h3>
+          <span class="painel-tag">Tabela de preços utilizada no PDV de Matrícula</span>
+        </div>
+        <div class="filtros-barra">
+          <select id="filtro-valores-categoria">
+            <option value="">Todas as categorias</option>
+            <option value="Bacharelado">Bacharelado</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Tecnólogo">Tecnólogo</option>
+            <option value="Pós-Graduação">Pós-Graduação</option>
+          </select>
+        </div>
+        <div class="tabela-wrap">
+          <table class="tabela-principal">
+            <thead>
+              <tr>
+                <th>Curso</th>
+                <th>Categoria</th>
+                <th>Carga Horária</th>
+                <th>Valor da Matrícula (R$)</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-valores"></tbody>
+          </table>
+        </div>
+        <p class="texto-info" id="status-valores"></p>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: FINANCEIRO ===================== -->
+    <section id="view-financeiro" class="view oculto">
+      <div class="fin-kpis" id="fin-kpis"></div>
+      <div class="fin-tabs" id="fin-tabs">
+        <button class="fin-tab" data-fintab="pdv">PDV / Caixa</button>
+        <button class="fin-tab" data-fintab="mensalidades">Mensalidades</button>
+        <button class="fin-tab" data-fintab="receitas">Receitas</button>
+        <button class="fin-tab" data-fintab="despesas">Despesas</button>
+        <button class="fin-tab" data-fintab="inadimplencia">Inadimplência</button>
+      </div>
+      <div class="painel" id="fin-conteudo"></div>
+    </section>
+
+    <!-- ===================== VIEW: PDV MATRÍCULA ===================== -->
+    <section id="view-pdv" class="view oculto">
+      <div class="pdv-grid">
+
+        <div class="painel pdv-form">
+          <div class="painel-cabeca">
+            <h3 data-i18n="pdv.titulo">Ponto de Venda — Recebimento de Matrícula</h3>
+            <span class="painel-tag" id="pdv-caixa-status" data-i18n="pdv.caixaaberto">Caixa aberto</span>
+          </div>
+
+          <div class="form-secao" data-i18n="pdv.secao.aluno">Aluno</div>
+          <div class="form-grid">
+            <label class="col-2" data-i18n="pdv.selecionaraluno">Selecionar aluno cadastrado
+              <select id="pdv-aluno"></select>
+            </label>
+          </div>
+          <div class="pdv-ou">
+            <span data-i18n="pdv.ou">ou cadastre rapidamente um novo aluno</span>
+          </div>
+          <div class="form-grid">
+            <label data-i18n="modal.nomecompleto">Nome completo <input type="text" id="pdv-novo-nome" data-i18n-placeholder="pdv.nomecompleto" placeholder="Nome completo"></label>
+            <label data-i18n="pdv.nascimento">Data de nascimento
+              <input type="date" id="pdv-novo-nascimento">
+            </label>
+          </div>
+
+          <div class="form-secao" data-i18n="pdv.secao.curso">Curso e Matrícula</div>
+          <div class="form-grid">
+            <label data-i18n="tabela.categoria">Categoria
+              <select id="pdv-categoria">
+                <option value="Bacharelado" data-i18n="cat.aperfeicoamento">Bacharelado</option>
+                <option value="Licenciatura" data-i18n="cat.aprendizagem">Licenciatura</option>
+                <option value="Tecnólogo" data-i18n="cat.tecnico">Tecnólogo</option>
+                <option value="Pós-Graduação" data-i18n="cat.qualificacao">Pós-Graduação</option>
+              </select>
+            </label>
+            <label data-i18n="tabela.curso">Curso
+              <select id="pdv-curso"></select>
+            </label>
+            <label class="col-2">Turma
+              <select id="pdv-turma"></select>
+            </label>
+          </div>
+
+          <div class="form-secao" data-i18n="pdv.secao.pagamento">Pagamento</div>
+          <div class="form-grid">
+            <label data-i18n="pdv.valortotal">Valor da matrícula (R$)
+              <input type="number" id="pdv-valor" step="0.01" min="0">
+            </label>
+            <label data-i18n="pdv.formapagamento">Forma de pagamento
+              <select id="pdv-forma">
+                <option value="Dinheiro" data-i18n="pdv.dinheiro">Dinheiro</option>
+                <option value="PIX">PIX</option>
+                <option value="Cartão de Débito" data-i18n="pdv.debito">Cartão de Débito</option>
+                <option value="Cartão de Crédito" data-i18n="pdv.credito">Cartão de Crédito</option>
+                <option value="Boleto" data-i18n="pdv.boleto">Boleto Bancário</option>
+              </select>
+            </label>
+            <label id="pdv-linha-recebido" data-i18n="pdv.valorrecebido">Valor recebido (R$)
+              <input type="number" id="pdv-recebido" step="0.01" min="0">
+            </label>
+            <label data-i18n="pdv.troco">Troco (R$)
+              <input type="text" id="pdv-troco" readonly>
+            </label>
+          </div>
+
+          <button class="btn btn-primario btn-block" id="btn-finalizar-pdv" data-i18n="pdv.finalizar">Finalizar Matrícula e Emitir Recibo</button>
+        </div>
+
+        <div class="painel pdv-caixa">
+          <div class="painel-cabeca">
+            <h3 data-i18n="pdv.caixadodia">Caixa do Dia</h3>
+          </div>
+          <div class="pdv-resumo-caixa">
+            <div><span data-i18n="pdv.totalarrecadado">Total arrecadado</span><b id="pdv-total-dia">R$ 0,00</b></div>
+            <div><span data-i18n="pdv.qtdmatriculas">Matrículas pagas</span><b id="pdv-qtd-dia">0</b></div>
+          </div>
+          <div class="tabela-wrap">
+            <table class="tabela-mini">
+              <thead><tr>
+                <th data-i18n="pdv.hora">Hora</th>
+                <th data-i18n="tabela.aluno">Aluno</th>
+                <th data-i18n="pdv.valor">Valor</th>
+                <th data-i18n="pdv.forma">Forma</th>
+              </tr></thead>
+              <tbody id="pdv-lista-transacoes"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="folha-recibo" class="folha-documento pdv-recibo-wrap oculto"></div>
+    </section>
+
+    <!-- ===================== VIEW: RELATORIOS ===================== -->
+    <section id="view-perfil-aluno" class="view oculto">
+      <button class="btn btn-outline perfil-btn-voltar" onclick="irParaView('alunos')">← Voltar para Alunos</button>
+
+      <div class="perfil-cabeca">
+        <div class="perfil-avatar" id="perfil-avatar">--</div>
+        <div class="perfil-cabeca-info">
+          <h2 id="perfil-nome">—</h2>
+          <div class="perfil-cabeca-badges">
+            <span class="badge" id="perfil-badge-status">—</span>
+            <span class="perfil-chip" id="perfil-chip-matricula">Matrícula —</span>
+            <span class="perfil-chip" id="perfil-chip-curso">—</span>
+            <span class="perfil-chip" id="perfil-chip-turma">Turma —</span>
+            <span class="badge-menor oculto" id="perfil-badge-menor">MENOR</span>
+          </div>
+        </div>
+        <div class="perfil-cabeca-acoes">
+          <button class="btn btn-outline" id="perfil-btn-editar" title="Editar cadastro">✏️ Editar cadastro</button>
+          <button class="btn btn-primario" id="perfil-btn-documento" title="Gerar documento">📄 Gerar documento</button>
+        </div>
+      </div>
+
+      <div class="fin-tabs">
+        <button class="perfil-tab" data-perfiltab="pessoal">Dados Pessoais</button>
+        <button class="perfil-tab" data-perfiltab="academico">Acadêmico</button>
+        <button class="perfil-tab" data-perfiltab="financeiro">Financeiro</button>
+      </div>
+
+      <div id="perfil-conteudo-pessoal" class="perfil-conteudo">
+        <div class="painel">
+          <div class="painel-cabeca"><h3>Dados Pessoais</h3></div>
+          <div class="perfil-grade-dados">
+            <div><span>Nome completo</span><b id="pp-nome">—</b></div>
+            <div><span>Data de nascimento</span><b id="pp-nascimento">—</b></div>
+            <div><span>Idade</span><b id="pp-idade">—</b></div>
+            <div><span>Gênero</span><b id="pp-genero">—</b></div>
+            <div><span>CPF</span><b id="pp-cpf">—</b></div>
+            <div><span>RA</span><b id="pp-ra">—</b></div>
+            <div><span>Telefone</span><b id="pp-telefone">—</b></div>
+            <div><span>E-mail</span><b id="pp-email">—</b></div>
+            <div class="perfil-grade-full"><span>Endereço</span><b id="pp-endereco">—</b></div>
+          </div>
+        </div>
+        <div class="painel oculto" id="perfil-painel-responsavel">
+          <div class="painel-cabeca"><h3>Responsável</h3></div>
+          <div class="perfil-grade-dados">
+            <div><span>Nome</span><b id="pp-resp-nome">—</b></div>
+            <div><span>Parentesco</span><b id="pp-resp-parentesco">—</b></div>
+            <div><span>CPF</span><b id="pp-resp-cpf">—</b></div>
+            <div><span>Telefone</span><b id="pp-resp-telefone">—</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="perfil-conteudo-academico" class="perfil-conteudo oculto">
+        <div class="painel">
+          <div class="painel-cabeca"><h3>Situação Acadêmica</h3></div>
+          <div class="perfil-grade-dados">
+            <div><span>Curso</span><b id="pa-curso">—</b></div>
+            <div><span>Categoria</span><b id="pa-categoria">—</b></div>
+            <div><span>Turma</span><b id="pa-turma">—</b></div>
+            <div><span>Carga horária</span><b id="pa-cargahoraria">—</b></div>
+            <div><span>Unidade</span><b id="pa-unidade">—</b></div>
+            <div><span>Data de matrícula</span><b id="pa-datamatricula">—</b></div>
+            <div><span>Matrícula</span><b id="pa-matricula">—</b></div>
+            <div><span>Situação</span><b id="pa-status">—</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="perfil-conteudo-financeiro" class="perfil-conteudo oculto">
+        <div class="bi-kpi-grid perfil-fin-kpis">
+          <div class="kpi-card kpi-verde"><div class="kpi-topo"><span class="kpi-label">Pago</span></div><span class="kpi-valor" id="pf-total-pago">R$ 0</span></div>
+          <div class="kpi-card kpi-ambar"><div class="kpi-topo"><span class="kpi-label">Pendente</span></div><span class="kpi-valor" id="pf-total-pendente">R$ 0</span></div>
+          <div class="kpi-card kpi-vermelho"><div class="kpi-topo"><span class="kpi-label">Em atraso</span></div><span class="kpi-valor" id="pf-total-atrasado">R$ 0</span></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3>Mensalidades</h3></div>
+          <table class="tabela-simples" id="tabela-perfil-mensalidades">
+            <thead><tr><th>Competência</th><th>Valor</th><th>Vencimento</th><th>Situação</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-bi" class="view oculto">
+      <div class="bi-filtros">
+        <div class="bi-filtro-item">
+          <label data-i18n="bi.filtro.unidade">Unidade</label>
+          <select id="bi-filtro-unidade" onchange="alternarUnidade(this.value)"></select>
+        </div>
+        <div class="bi-filtro-item">
+          <label data-i18n="bi.filtro.periodo">Período</label>
+          <select id="bi-filtro-periodo" onchange="alterarFiltroPeriodoBI(this.value)">
+            <option value="3" data-i18n="bi.filtro.periodo.3m">Últimos 3 meses</option>
+            <option value="6" selected data-i18n="bi.filtro.periodo.6m">Últimos 6 meses</option>
+            <option value="12" data-i18n="bi.filtro.periodo.12m">Últimos 12 meses</option>
+            <option value="ano" data-i18n="bi.filtro.periodo.ano">Este ano</option>
+          </select>
+        </div>
+        <div class="bi-filtro-item">
+          <label data-i18n="bi.filtro.curso">Curso</label>
+          <select id="bi-filtro-curso" onchange="alterarFiltroCursoBI(this.value)"></select>
+        </div>
+      </div>
+
+      <div class="bi-kpi-grid">
+        <div class="kpi-card kpi-verde">
+          <div class="kpi-topo"><span class="kpi-label">Taxa de Conclusão</span>
+            <span class="kpi-icone kpi-icone-verde hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></span></div>
+          <span class="kpi-valor" id="bi-kpi-conclusao">0%</span>
+          <span class="kpi-nota" id="bi-kpi-conclusao-nota">— comparado ao período anterior</span>
+        </div>
+        <div class="kpi-card kpi-vermelho">
+          <div class="kpi-topo"><span class="kpi-label">Taxa de Evasão</span>
+            <span class="kpi-icone kpi-icone-vermelho hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 17l5-5-5-5M18 12H3"/></svg></span></div>
+          <span class="kpi-valor" id="bi-kpi-evasao">0%</span>
+          <span class="kpi-nota" id="bi-kpi-evasao-nota">dos alunos da base</span>
+        </div>
+        <div class="kpi-card kpi-azul">
+          <div class="kpi-topo"><span class="kpi-label">Taxa de Ocupação</span>
+            <span class="kpi-icone kpi-icone-azul hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg></span></div>
+          <span class="kpi-valor" id="bi-kpi-ocupacao">0%</span>
+          <span class="kpi-nota" id="bi-kpi-ocupacao-nota">vagas preenchidas nas turmas ativas</span>
+        </div>
+        <div class="kpi-card kpi-receita">
+          <div class="kpi-topo"><span class="kpi-label">Ticket Médio</span>
+            <span class="kpi-icone kpi-icone-receita hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.3 9.3c0-1.3 1.2-2.3 2.7-2.3s2.7.9 2.7 2.1c0 2.6-5.4 1.7-5.4 4.3 0 1.3 1.2 2.3 2.7 2.3s2.7-1 2.7-2.3"/></svg></span></div>
+          <span class="kpi-valor" id="bi-kpi-ticket">R$ 0</span>
+          <span class="kpi-nota">receita do mês ÷ alunos ativos</span>
+        </div>
+        <div class="kpi-card kpi-ambar">
+          <div class="kpi-topo"><span class="kpi-label">Inadimplência</span>
+            <span class="kpi-icone kpi-icone-ambar hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.7 17a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span></div>
+          <span class="kpi-valor" id="bi-kpi-inadimplencia">0%</span>
+          <span class="kpi-nota" id="bi-kpi-inadimplencia-nota">dos alunos ativos em atraso</span>
+        </div>
+      </div>
+
+      <div class="bi-grid-2">
+        <div class="painel">
+          <div class="painel-cabeca"><h3 id="bi-titulo-receitadespesa">Receita x Despesa — últimos 6 meses</h3></div>
+          <div id="grafico-bi-receitadespesa" class="grafico"></div>
+          <div class="bi-legenda-linhas">
+            <span><i class="bi-dot" style="background:#1a9c6b"></i> Receita</span>
+            <span><i class="bi-dot" style="background:#d64545"></i> Despesa</span>
+          </div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="bi.alunosunidade">Alunos por Unidade</h3></div>
+          <div id="grafico-bi-unidades" class="grafico"></div>
+        </div>
+      </div>
+
+      <div class="bi-grid-2">
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="bi.alunoscurso">Alunos por Curso</h3></div>
+          <div id="grafico-bi-cursos" class="grafico"></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="bi.ocupacaoturma">Ocupação por Turma (top 8)</h3></div>
+          <div id="grafico-bi-ocupacao" class="grafico"></div>
+        </div>
+      </div>
+
+      <div class="bi-grid-2">
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="bi.inadimplenciaunidade">Inadimplência por Unidade</h3></div>
+          <table class="tabela-simples" id="tabela-bi-inadimplencia">
+            <thead><tr><th data-i18n="bi.tabela.unidade">Unidade</th><th data-i18n="bi.tabela.ematraso">Em atraso</th><th data-i18n="bi.tabela.alunosematraso">Alunos em atraso</th><th data-i18n="bi.tabela.pctunidade">% da unidade</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-relatorios" class="view oculto">
+      <div class="painel">
+        <div class="painel-cabeca"><h3 data-i18n="rel.titulo">Relatórios Gerenciais</h3></div>
+        <div class="cards-relatorio">
+          <div class="card-relatorio" data-relatorio="geral">
+            <span class="card-relatorio-ico">📋</span>
+            <strong data-i18n="rel.geral">Relatório Geral de Matrículas</strong>
+            <p data-i18n="rel.geral.desc">Lista completa de alunos com dados de curso, categoria e situação.</p>
+          </div>
+          <div class="card-relatorio" data-relatorio="categoria">
+            <span class="card-relatorio-ico">🗂️</span>
+            <strong data-i18n="rel.categoria">Relatório por Categoria</strong>
+            <p data-i18n="rel.categoria.desc">Quantitativo detalhado por categoria de curso e turma.</p>
+          </div>
+          <div class="card-relatorio" data-relatorio="menores">
+            <span class="card-relatorio-ico">🛡️</span>
+            <strong data-i18n="rel.menores">Relatório de Menores de Idade</strong>
+            <p data-i18n="rel.menores.desc">Alunos menores de idade com dados dos responsáveis legais.</p>
+          </div>
+          <div class="card-relatorio" data-relatorio="situacao">
+            <span class="card-relatorio-ico">✅</span>
+            <strong data-i18n="rel.situacao">Relatório de Situação</strong>
+            <p data-i18n="rel.situacao.desc">Ativos, concluídos, trancados e evadidos no período.</p>
+          </div>
+          <div class="card-relatorio" data-relatorio="financeiro">
+            <span class="card-relatorio-ico">💰</span>
+            <strong data-i18n="rel.financeiro">Relatório Financeiro (PDV)</strong>
+            <p data-i18n="rel.financeiro.desc">Pagamentos de matrícula recebidos no PDV, por forma de pagamento.</p>
+          </div>
+        </div>
+        <div id="area-relatorio" class="area-relatorio"></div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: CENTRAL DE ATENDIMENTO ===================== -->
+    <section id="view-atendimento" class="view oculto">
+      <div class="atend-shell">
+        <aside class="atend-lista">
+          <div class="atend-lista-cabeca">
+            <h3 data-i18n="atend.titulo">Central de Atendimento</h3>
+            <span class="atend-lista-status"><span class="ponto-aovivo"></span><span id="atend-contador-status" data-i18n="atend.atualizando">Atualizando lista de conversas</span></span>
+          </div>
+          <div class="atend-busca">
+            <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+            <input type="text" id="atend-busca-input" data-i18n-placeholder="atend.pesquisar" placeholder="Pesquisar...">
+          </div>
+          <div class="atend-filtros">
+            <button type="button" class="atend-filtro ativo" data-filtro-atend="todas" data-i18n="atend.todas">Todas</button>
+            <button type="button" class="atend-filtro" data-filtro-atend="naolidas" data-i18n="atend.naolidas">Não lidas</button>
+          </div>
+          <div id="atend-conversas" class="atend-conversas"></div>
+        </aside>
+
+        <section class="atend-thread">
+          <div id="atend-thread-vazio" class="atend-thread-vazio">
+            <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <p data-i18n="atend.selecione">Selecione uma conversa para começar a atender.</p>
+          </div>
+
+          <div id="atend-thread-conteudo" class="atend-thread-conteudo oculto">
+            <div class="atend-thread-cabeca">
+              <span class="atend-avatar" id="atend-thread-avatar">?</span>
+              <div>
+                <strong id="atend-thread-nome">—</strong>
+                <span id="atend-thread-sub">—</span>
+              </div>
+            </div>
+
+            <div id="atend-thread-mensagens" class="atend-thread-mensagens"></div>
+
+            <form id="atend-thread-form" class="atend-thread-form">
+              <select id="atend-msg-padronizada" class="atend-select-padrao">
+                <option value="" data-i18n="atend.selecionepadrao">Selecione uma mensagem padronizada</option>
+                <option data-i18n="atend.padrao1">Olá! Em que posso ajudar?</option>
+                <option data-i18n="atend.padrao2">Sua solicitação foi recebida e está em análise.</option>
+                <option data-i18n="atend.padrao3">Poderia enviar mais detalhes, por favor?</option>
+                <option data-i18n="atend.padrao4">Segue o retorno da secretaria sobre o assunto.</option>
+                <option data-i18n="atend.padrao5">Agradecemos o contato. Qualquer dúvida, estamos à disposição.</option>
+              </select>
+              <div class="atend-thread-input-linha">
+                <textarea id="atend-thread-input" rows="1" data-i18n-placeholder="atend.digite" placeholder="Digite sua mensagem..."></textarea>
+                <button type="button" id="atend-btn-anexo" class="atend-btn-anexo" title="Anexar arquivo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1 12.7 19.8a5 5 0 0 1-7.1-7.1l8.7-8.7a3.3 3.3 0 0 1 4.7 4.7l-8.7 8.7a1.7 1.7 0 0 1-2.4-2.4l7.9-7.9"/></svg>
+                </button>
+                <button type="submit" id="atend-btn-enviar" class="atend-btn-enviar" data-i18n="atend.enviar">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: DOCUMENTOS ===================== -->
+    <section id="view-documentos" class="view oculto">
+      <div class="painel">
+        <div class="painel-cabeca"><h3 data-i18n="doc.titulo">Emissão de Documentos</h3><span class="painel-tag" data-i18n="doc.tag">Modelo padrão institucional</span></div>
+        <div class="doc-controles">
+          <select id="doc-aluno"></select>
+          <select id="doc-tipo">
+            <option value="declaracao" data-i18n="doc.tipo.declaracao">Declaração de Matrícula</option>
+            <option value="frequencia" data-i18n="doc.tipo.frequencia">Declaração de Frequência</option>
+            <option value="escolaridade" data-i18n="doc.tipo.escolaridade">Declaração de Escolaridade</option>
+            <option value="conclusao" data-i18n="doc.tipo.conclusao">Declaração de Conclusão</option>
+            <option value="historico" data-i18n="doc.tipo.historico">Histórico Escolar</option>
+            <option value="boletim" data-i18n="doc.tipo.boletim">Boletim Escolar</option>
+            <option value="certificado" data-i18n="doc.tipo.certificado">Certificado de Conclusão</option>
+            <option value="diploma" data-i18n="doc.tipo.diploma">Diploma</option>
+            <option value="ficha" data-i18n="doc.tipo.ficha">Ficha Individual do Aluno</option>
+            <option value="carteirinha" data-i18n="doc.tipo.carteirinha">Carteirinha Estudantil</option>
+            <option value="requerimento" data-i18n="doc.tipo.requerimento">Requerimento Escolar</option>
+          </select>
+          <button class="btn btn-primario" id="btn-gerar-doc" data-i18n="doc.gerar">Gerar Documento</button>
+          <button class="btn btn-outline" id="btn-imprimir-doc" data-i18n="doc.imprimir">Imprimir / Salvar PDF</button>
+        </div>
+        <div id="folha-documento" class="folha-documento"></div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: NOVIDADES ===================== -->
+    <section id="view-novidades" class="view oculto">
+      <div class="novidades-carrossel" id="novidades-carrossel">
+        <button type="button" class="carrossel-seta carrossel-seta-esq" id="novidade-anterior" title="Anterior">‹</button>
+        <div class="carrossel-viewport">
+          <div class="carrossel-slide" id="novidade-slide"></div>
+        </div>
+        <button type="button" class="carrossel-seta carrossel-seta-dir" id="novidade-proxima" title="Próxima">›</button>
+        <div class="carrossel-dots" id="novidade-dots"></div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: EM BREVE (stub genérico, sem uso atualmente) ===================== -->
+    <section id="view-portal-aluno" class="view oculto">
+      <div class="portal-hero painel">
+        <div>
+          <h2 id="pta-saudacao">Olá! 👋</h2>
+          <p data-i18n="portalaluno.boasvindas">Bem-vindo ao seu painel acadêmico. Acompanhe notas, frequência, financeiro e avisos.</p>
+        </div>
+        <div class="perfil-cabeca-badges">
+          <span class="perfil-chip" id="pta-curso">Curso —</span>
+          <span class="perfil-chip" id="pta-turma">Turma —</span>
+          <span class="perfil-chip" id="pta-matricula">Matrícula —</span>
+        </div>
+      </div>
+
+      <div class="bi-kpi-grid">
+        <div class="kpi-card kpi-azul">
+          <div class="kpi-topo"><span class="kpi-label" data-i18n="portalaluno.disciplinas">Disciplinas Cursando</span></div>
+          <span class="kpi-valor" id="pta-disciplinas">--</span>
+        </div>
+        <div class="kpi-card kpi-verde">
+          <div class="kpi-topo"><span class="kpi-label" data-i18n="portalaluno.pago">Mensalidades Pagas</span></div>
+          <span class="kpi-valor" id="pta-pagas">--</span>
+        </div>
+        <div class="kpi-card kpi-ambar">
+          <div class="kpi-topo"><span class="kpi-label" data-i18n="portalaluno.pendente">Pendente</span></div>
+          <span class="kpi-valor" id="pta-pendente">R$ 0</span>
+        </div>
+        <div class="kpi-card kpi-vermelho">
+          <div class="kpi-topo"><span class="kpi-label" data-i18n="portalaluno.atraso">Em Atraso</span></div>
+          <span class="kpi-valor" id="pta-atraso">R$ 0</span>
+        </div>
+      </div>
+
+      <div class="bi-grid-2">
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="portalaluno.acessorapido">Acesso Rápido</h3></div>
+          <div class="portal-quick-grid" id="pta-acessorapido"></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="portalaluno.proximoseventos">Próximos Eventos</h3></div>
+          <div id="pta-eventos"></div>
+        </div>
+      </div>
+
+      <div class="bi-grid-2">
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="portalaluno.comunicados">Comunicados</h3></div>
+          <div id="pta-comunicados"></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="portalaluno.mensalidades">Mensalidades</h3><a href="#" id="pta-link-vertudo" data-i18n="portalaluno.vertudo">Ver tudo</a></div>
+          <table class="tabela-simples" id="tabela-portal-aluno-mensalidades">
+            <thead><tr><th data-i18n="fin.competencia">Competência</th><th data-i18n="fin.valor">Valor</th><th data-i18n="fin.vencimento">Vencimento</th><th data-i18n="fin.situacao">Situação</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-portal-professor" class="view oculto">
+      <div class="portal-hero painel">
+        <div>
+          <h2 id="ptp-saudacao">Olá! 👋</h2>
+          <p data-i18n="portalprofessor.boasvindas">Bem-vindo ao seu painel do professor. Acompanhe suas turmas e atividades.</p>
+        </div>
+        <div class="perfil-cabeca-badges">
+          <span class="perfil-chip" id="ptp-unidade">Unidade —</span>
+        </div>
+      </div>
+
+      <div class="bi-kpi-grid">
+        <div class="kpi-card kpi-azul">
+          <div class="kpi-topo"><span class="kpi-label" data-i18n="portalprofessor.turmas">Turmas Atribuídas</span></div>
+          <span class="kpi-valor" id="ptp-turmas">--</span>
+        </div>
+        <div class="kpi-card kpi-verde">
+          <div class="kpi-topo"><span class="kpi-label" data-i18n="portalprofessor.alunos">Alunos</span></div>
+          <span class="kpi-valor" id="ptp-alunos">--</span>
+        </div>
+        <div class="kpi-card kpi-receita">
+          <div class="kpi-topo"><span class="kpi-label" data-i18n="portalprofessor.cursos">Cursos</span></div>
+          <span class="kpi-valor" id="ptp-cursos">--</span>
+        </div>
+      </div>
+
+      <div class="bi-grid-2">
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="portalprofessor.minhasturmas">Minhas Turmas</h3></div>
+          <table class="tabela-simples" id="tabela-portal-professor-turmas">
+            <thead><tr><th data-i18n="tu.codigo">Turma</th><th data-i18n="tu.curso">Curso</th><th data-i18n="tu.turno">Turno</th><th data-i18n="portalprofessor.alunos">Alunos</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca"><h3 data-i18n="portalaluno.acessorapido">Acesso Rápido</h3></div>
+          <div class="portal-quick-grid" id="ptp-acessorapido"></div>
+        </div>
+      </div>
+
+      <div class="painel">
+        <div class="painel-cabeca"><h3 data-i18n="portalaluno.comunicados">Comunicados</h3></div>
+        <div id="ptp-comunicados"></div>
+      </div>
+    </section>
+
+    <section id="view-stub" class="view oculto">
+      <div class="stub-embreve">
+        <span class="stub-icone">🚧</span>
+        <h3 id="stub-titulo">Em breve</h3>
+        <p data-i18n="stub.mensagem">Este módulo está em desenvolvimento e fará parte de uma próxima atualização do Nexus Escolar.</p>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: GENÉRICA (módulos de cadastro simples) ===================== -->
+    <section id="view-generico" class="view oculto">
+      <div class="painel">
+        <div class="painel-cabeca">
+          <h3 id="generico-titulo">Módulo</h3>
+          <button class="btn btn-primario" id="btn-novo-generico">+ Novo</button>
+        </div>
+        <p class="texto-info" id="generico-descricao"></p>
+
+        <!-- Modo widgets — usado apenas pelo módulo Comunicados -->
+        <div id="comunicados-widgets" class="comunicados-widgets oculto">
+          <div class="com-resumo-grid" id="comunicados-resumo"></div>
+          <div class="com-filtros" id="comunicados-filtros"></div>
+          <div class="com-cards-grid" id="comunicados-cards"></div>
+        </div>
+
+        <!-- Modo matriz — usado apenas pelo módulo Permissões: controla de verdade
+             quais grupos do menu lateral cada perfil enxerga. -->
+        <div id="permissoes-widgets" class="permissoes-widgets oculto">
+          <p class="texto-info">Marque quais áreas do menu cada perfil pode acessar. Admin e Diretoria sempre têm acesso total. As alterações são aplicadas imediatamente e ficam salvas neste navegador.</p>
+          <div class="perm-tabela-wrap">
+            <table class="tabela-principal perm-tabela" id="tabela-permissoes">
+              <thead><tr id="perm-thead"></tr></thead>
+              <tbody id="perm-tbody"></tbody>
+            </table>
+          </div>
+          <div class="perm-acoes">
+            <button type="button" class="btn btn-outline" id="btn-perm-restaurar">Restaurar padrão</button>
+            <span class="perm-status" id="perm-status"></span>
+          </div>
+        </div>
+
+        <div class="tabela-wrap" id="generico-tabela-wrap">
+          <table class="tabela-principal" id="tabela-generico">
+            <thead><tr id="generico-thead"></tr></thead>
+            <tbody id="generico-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: DADOS ===================== -->
+    <section id="view-dados" class="view oculto">
+      <div class="painel">
+        <div class="painel-cabeca">
+          <h3 data-i18n="dados.titulo">Banco de Dados (PostgreSQL / Neon)</h3>
+          <span class="badge badge-perigo" id="badge-conexao-db">Desconectado</span>
+        </div>
+        <p class="texto-info" data-i18n="dados.info">O Nexus Escolar se conecta a um banco PostgreSQL real hospedado no Neon, através da API própria do sistema (pasta /api). Não é preciso colar nenhuma senha aqui — a conexão é feita pelo servidor.</p>
+        <div class="doc-controles">
+          <button class="btn btn-primario" id="btn-testar-conexao-db">Testar Conexão</button>
+          <button class="btn btn-outline" id="btn-sincronizar-db">Sincronizar agora (enviar ao banco)</button>
+          <button class="btn btn-outline" id="btn-carregar-db">Carregar do banco</button>
+          <button class="btn btn-perigo" id="btn-resetar" data-i18n="dados.resetar">Restaurar Dados Fictícios Padrão</button>
+        </div>
+        <p class="texto-info" id="status-dados"></p>
+        <p class="texto-info">Esquema SQL em <code>schema.sql</code> e instruções de publicação em <code>DEPLOY.md</code>. Alunos, Professores, Turmas, Mensalidades, Despesas e PDV já leem e gravam direto no banco.</p>
+      </div>
+    </section>
+
+    <section id="view-auditoria" class="view oculto">
+      <div class="painel">
+        <div class="painel-cabeca">
+          <h3 data-i18n="nav.auditoria">Auditoria de Ações</h3>
+        </div>
+        <p class="texto-info" data-i18n="auditoria.info">Registro cronológico das ações realizadas pelos usuários nesta sessão do sistema (criação, edição e exclusão de registros).</p>
+        <div class="filtros-barra">
+          <input type="text" id="auditoria-busca" data-i18n-placeholder="auditoria.buscar" placeholder="Buscar por usuário, módulo ou ação...">
+          <select id="auditoria-filtro-acao">
+            <option value="" data-i18n="auditoria.todasacoes">Todas as ações</option>
+            <option value="Criação" data-i18n="auditoria.criacao">Criação</option>
+            <option value="Edição" data-i18n="auditoria.edicao">Edição</option>
+            <option value="Exclusão" data-i18n="auditoria.exclusao">Exclusão</option>
+            <option value="Login" data-i18n="auditoria.login">Login</option>
+          </select>
+        </div>
+        <div class="tabela-wrap">
+          <table class="tabela-principal">
+            <thead><tr>
+              <th data-i18n="auditoria.datahora">Data/Hora</th>
+              <th data-i18n="auditoria.usuario">Usuário</th>
+              <th data-i18n="auditoria.perfil">Perfil</th>
+              <th data-i18n="auditoria.acao">Ação</th>
+              <th data-i18n="auditoria.modulo">Módulo</th>
+              <th data-i18n="auditoria.detalhe">Detalhe</th>
+            </tr></thead>
+            <tbody id="auditoria-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-sessoes" class="view oculto">
+      <div class="painel">
+        <div class="painel-cabeca">
+          <h3 data-i18n="nav.sessoes">Controle de Sessões</h3>
+        </div>
+        <p class="texto-info" data-i18n="sessoes.info">Sessões de acesso ao sistema nesta e em conexões anteriores registradas neste navegador.</p>
+        <div class="tabela-wrap">
+          <table class="tabela-principal">
+            <thead><tr>
+              <th data-i18n="sessoes.usuario">Usuário</th>
+              <th data-i18n="sessoes.unidade">Unidade</th>
+              <th data-i18n="sessoes.dispositivo">Dispositivo</th>
+              <th data-i18n="sessoes.inicio">Início</th>
+              <th data-i18n="sessoes.status">Status</th>
+              <th></th>
+            </tr></thead>
+            <tbody id="sessoes-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer class="app-rodape">
+      <span class="app-rodape-marca">NEXUS <b data-i18n="login3.marca.escolar">ESCOLAR</b> <small data-i18n="app.rodape.versao">v2.0.0</small></span>
+      <nav class="app-rodape-links">
+        <a href="https://wa.me/5531983047290" target="_blank" rel="noopener" data-i18n="app.rodape.suporte">Suporte</a>
+        <a href="https://wa.me/5531983047290" target="_blank" rel="noopener" data-i18n="login4.faleconosco">Fale conosco</a>
+        <a href="#" onclick="return false;" data-i18n="app.rodape.privacidade">Política de Privacidade</a>
+      </nav>
+      <span class="app-rodape-status"><span class="ponto-aovivo"></span><span data-i18n="app.rodape.conectado">Conectado</span></span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- ============ MODAL EDIÇÃO ALUNO ============ -->
+<div id="modal-aluno" class="modal-fundo oculto">
+  <div class="modal-caixa">
+    <div class="modal-cabeca">
+      <h3 id="modal-titulo" data-i18n="modal.editar">Editar Aluno</h3>
+      <button id="modal-fechar" class="modal-fechar">✕</button>
+    </div>
+    <form id="form-aluno" class="modal-corpo">
+      <input type="hidden" id="f-id">
+
+      <div class="form-secao" data-i18n="modal.dadosaluno">Dados do Aluno</div>
+      <div class="form-grid">
+        <label data-i18n="modal.nomecompleto">Nome completo
+          <input type="text" id="f-nome" required>
+        </label>
+        <label data-i18n="pdv.nascimento">Data de nascimento
+          <input type="date" id="f-nascimento" required>
+        </label>
+        <label>CPF
+          <input type="text" id="f-cpf">
+        </label>
+        <label data-i18n="modal.telefone">Telefone
+          <input type="text" id="f-telefone">
+        </label>
+        <label data-i18n="modal.email">E-mail
+          <input type="email" id="f-email">
+        </label>
+        <label class="col-2" data-i18n="modal.endereco">Endereço
+          <input type="text" id="f-endereco">
+        </label>
+      </div>
+
+      <div class="form-secao" data-i18n="modal.dadosmatricula">Dados da Matrícula</div>
+      <div class="form-grid">
+        <label data-i18n="tabela.categoria">Categoria
+          <select id="f-categoria">
+            <option data-i18n="cat.aperfeicoamento">Bacharelado</option>
+            <option data-i18n="cat.aprendizagem">Licenciatura</option>
+            <option data-i18n="cat.tecnico">Tecnólogo</option>
+            <option data-i18n="cat.qualificacao">Pós-Graduação</option>
+          </select>
+        </label>
+        <label data-i18n="tabela.curso">Curso
+          <input type="text" id="f-curso">
+        </label>
+        <label data-i18n="tabela.turma">Turma
+          <input type="text" id="f-turma">
+        </label>
+        <label data-i18n="modal.datamatricula">Data de matrícula
+          <input type="date" id="f-datamatricula">
+        </label>
+        <label data-i18n="tabela.situacao">Situação
+          <select id="f-status">
+            <option data-i18n="status.ativo">Ativo</option>
+            <option data-i18n="status.concluido">Concluído</option>
+            <option data-i18n="status.trancado">Trancado</option>
+            <option data-i18n="status.evadido">Evadido</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="secao-responsavel">
+        <div class="form-secao form-secao-alerta" data-i18n="modal.alertamenor">⚠ Aluno menor de idade — dados do responsável legal</div>
+        <div class="form-grid">
+          <label data-i18n="modal.respnome">Nome do responsável
+            <input type="text" id="f-resp-nome">
+          </label>
+          <label data-i18n="modal.parentesco">Parentesco
+            <input type="text" id="f-resp-parentesco" placeholder="Mãe, Pai, Tutor...">
+          </label>
+          <label data-i18n="modal.respcpf">CPF do responsável
+            <input type="text" id="f-resp-cpf">
+          </label>
+          <label data-i18n="modal.resptelefone">Telefone do responsável
+            <input type="text" id="f-resp-telefone">
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-rodape">
+        <button type="button" class="btn btn-outline" id="btn-excluir-aluno" data-i18n="modal.excluir">Excluir aluno</button>
+        <div>
+          <button type="button" class="btn btn-outline" id="btn-cancelar-aluno" data-i18n="modal.cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primario" data-i18n="modal.salvar">Salvar alterações</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL SIMULAÇÃO DE PAGAMENTO (PDV) ============ -->
+<div id="modal-pagamento" class="modal-fundo oculto">
+  <div class="modal-caixa modal-pagamento-caixa">
+    <div class="modal-cabeca">
+      <h3 id="pag-titulo">Processando pagamento</h3>
+      <button id="pag-fechar" class="modal-fechar">✕</button>
+    </div>
+    <div class="modal-corpo pag-corpo" id="pag-corpo">
+      <!-- conteúdo gerado dinamicamente em script.js conforme a forma de pagamento -->
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL EDIÇÃO DESPESA ============ -->
+<div id="modal-despesa" class="modal-fundo oculto">
+  <div class="modal-caixa">
+    <div class="modal-cabeca">
+      <h3 id="modal-despesa-titulo">Nova Despesa</h3>
+      <button id="modal-despesa-fechar" class="modal-fechar">✕</button>
+    </div>
+    <form id="form-despesa" class="modal-corpo">
+      <input type="hidden" id="ds-id">
+      <div class="form-grid">
+        <label>Categoria
+          <select id="ds-categoria">
+            <option>Folha de Pagamento</option>
+            <option>Aluguel</option>
+            <option>Água, Luz e Internet</option>
+            <option>Material Didático</option>
+            <option>Manutenção</option>
+            <option>Marketing</option>
+            <option>Outros</option>
+          </select>
+        </label>
+        <label class="col-2">Descrição
+          <input type="text" id="ds-descricao" required>
+        </label>
+        <label>Valor (R$)
+          <input type="number" id="ds-valor" min="0" step="0.01" required>
+        </label>
+        <label>Data
+          <input type="date" id="ds-data" required>
+        </label>
+        <label>Unidade
+          <select id="ds-unidade">
+            <option value="bhsede">Belo Horizonte - Filial Centro</option>
+            <option value="bhfilial">Belo Horizonte - Filial Pampulha</option>
+            <option value="contagem1">Contagem - Sede</option>
+            <option value="contagem2">Contagem - Filial Riacho</option>
+            <option value="betim">Betim - Filial</option>
+          </select>
+        </label>
+        <label>Situação
+          <select id="ds-status">
+            <option value="Pendente">Pendente</option>
+            <option value="Pago">Pago</option>
+          </select>
+        </label>
+      </div>
+      <div class="modal-rodape">
+        <button type="button" class="btn btn-outline" id="btn-excluir-despesa">Excluir</button>
+        <div>
+          <button type="button" class="btn btn-outline" id="btn-cancelar-despesa">Cancelar</button>
+          <button type="submit" class="btn btn-primario">Salvar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL EDIÇÃO PROFESSOR ============ -->
+<div id="modal-professor" class="modal-fundo oculto">
+  <div class="modal-caixa">
+    <div class="modal-cabeca">
+      <h3 id="modal-professor-titulo">Editar Professor</h3>
+      <button id="modal-professor-fechar" class="modal-fechar">✕</button>
+    </div>
+    <form id="form-professor" class="modal-corpo">
+      <input type="hidden" id="pf-id">
+      <div class="form-secao">Dados do Professor</div>
+      <div class="form-grid">
+        <label class="col-2">Nome completo
+          <input type="text" id="pf-nome" required>
+        </label>
+        <label>CPF
+          <input type="text" id="pf-cpf">
+        </label>
+        <label>Telefone
+          <input type="text" id="pf-telefone">
+        </label>
+        <label class="col-2">E-mail
+          <input type="email" id="pf-email">
+        </label>
+        <label class="col-2">Formação / Titulação
+          <input type="text" id="pf-formacao" placeholder="Ex.: Licenciatura em Matemática, Mestrado em Educação...">
+        </label>
+        <label>Categoria de atuação
+          <select id="pf-categoria">
+            <option value="Bacharelado">Bacharelado</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Tecnólogo">Tecnólogo</option>
+            <option value="Pós-Graduação">Pós-Graduação</option>
+          </select>
+        </label>
+        <label>Disciplina / Curso principal
+          <select id="pf-curso"></select>
+        </label>
+        <label>Unidade
+          <select id="pf-unidade">
+            <option value="bhsede">Belo Horizonte - Filial Centro</option>
+            <option value="bhfilial">Belo Horizonte - Filial Pampulha</option>
+            <option value="contagem1">Contagem - Sede</option>
+            <option value="contagem2">Contagem - Filial Riacho</option>
+            <option value="betim">Betim - Filial</option>
+          </select>
+        </label>
+        <label>Situação
+          <select id="pf-status">
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+        </label>
+      </div>
+      <div class="modal-rodape">
+        <button type="button" class="btn btn-outline" id="btn-excluir-professor">Excluir professor</button>
+        <div>
+          <button type="button" class="btn btn-outline" id="btn-cancelar-professor">Cancelar</button>
+          <button type="submit" class="btn btn-primario">Salvar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL GENÉRICO (usado pelos módulos de cadastro simples) ============ -->
+<div id="modal-generico" class="modal-fundo oculto">
+  <div class="modal-caixa">
+    <div class="modal-cabeca">
+      <h3 id="modal-generico-titulo">Novo registro</h3>
+      <button id="modal-generico-fechar" class="modal-fechar">✕</button>
+    </div>
+    <form id="form-generico" class="modal-corpo">
+      <input type="hidden" id="gn-id">
+      <div class="form-grid" id="generico-campos"></div>
+      <div class="modal-rodape">
+        <button type="button" class="btn btn-outline" id="btn-excluir-generico">Excluir</button>
+        <div>
+          <button type="button" class="btn btn-outline" id="btn-cancelar-generico">Cancelar</button>
+          <button type="submit" class="btn btn-primario">Salvar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL EDIÇÃO TURMA ============ -->
+<div id="modal-turma" class="modal-fundo oculto">
+  <div class="modal-caixa">
+    <div class="modal-cabeca">
+      <h3 id="modal-turma-titulo">Editar Turma</h3>
+      <button id="modal-turma-fechar" class="modal-fechar">✕</button>
+    </div>
+    <form id="form-turma" class="modal-corpo">
+      <input type="hidden" id="tu-id">
+      <div class="form-secao">Dados da Turma</div>
+      <div class="form-grid">
+        <label>Código da Turma
+          <input type="text" id="tu-codigo" required>
+        </label>
+        <label>Categoria
+          <select id="tu-categoria">
+            <option value="Bacharelado">Bacharelado</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Tecnólogo">Tecnólogo</option>
+            <option value="Pós-Graduação">Pós-Graduação</option>
+          </select>
+        </label>
+        <label class="col-2">Curso
+          <select id="tu-curso"></select>
+        </label>
+        <label class="col-2">Professor responsável
+          <select id="tu-professor"></select>
+        </label>
+        <label>Turno
+          <select id="tu-turno">
+            <option value="Manhã">Manhã</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noite">Noite</option>
+          </select>
+        </label>
+        <label>Horário
+          <input type="text" id="tu-horario" placeholder="Ex.: 19h às 22h">
+        </label>
+        <label>Sala
+          <input type="text" id="tu-sala" placeholder="Ex.: Sala 12">
+        </label>
+        <label>Capacidade de vagas
+          <input type="number" id="tu-capacidade" min="1" step="1">
+        </label>
+        <label>Unidade
+          <select id="tu-unidade">
+            <option value="bhsede">Belo Horizonte - Filial Centro</option>
+            <option value="bhfilial">Belo Horizonte - Filial Pampulha</option>
+            <option value="contagem1">Contagem - Sede</option>
+            <option value="contagem2">Contagem - Filial Riacho</option>
+            <option value="betim">Betim - Filial</option>
+          </select>
+        </label>
+        <label>Situação
+          <select id="tu-status">
+            <option value="Ativa">Ativa</option>
+            <option value="Encerrada">Encerrada</option>
+          </select>
+        </label>
+      </div>
+      <div class="modal-rodape">
+        <button type="button" class="btn btn-outline" id="btn-excluir-turma">Excluir turma</button>
+        <div>
+          <button type="button" class="btn btn-outline" id="btn-cancelar-turma">Cancelar</button>
+          <button type="submit" class="btn btn-primario">Salvar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast oculto"></div>
+
+<!-- ============ ASSISTENTE NEXUS (chatbot por palavras-chave, sem IA/API) ============ -->
+<button type="button" id="ia-botao-flutuante" class="ia-botao-flutuante oculto" title="Assistente Nexus">
+  <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a5 5 0 0 1 5 5v2a5 5 0 0 1-10 0V8a5 5 0 0 1 5-5z"/><path d="M8 13v2a4 4 0 0 0 8 0v-2M5 21a7 7 0 0 1 14 0"/><circle cx="9.5" cy="9" r="1"/><circle cx="14.5" cy="9" r="1"/></svg></span>
+</button>
+
+<div id="ia-painel" class="ia-painel oculto">
+  <div class="ia-cabeca">
+    <div class="ia-cabeca-info">
+      <span class="ia-cabeca-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a5 5 0 0 1 5 5v2a5 5 0 0 1-10 0V8a5 5 0 0 1 5-5z"/><path d="M8 13v2a4 4 0 0 0 8 0v-2M5 21a7 7 0 0 1 14 0"/><circle cx="9.5" cy="9" r="1"/><circle cx="14.5" cy="9" r="1"/></svg></span>
+      <div>
+        <strong>Assistente Nexus</strong>
+        <span>Tire dúvidas sobre o sistema</span>
+      </div>
+    </div>
+    <button type="button" id="ia-fechar" class="ia-fechar" title="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div id="ia-mensagens" class="ia-mensagens">
+    <div class="ia-msg ia-msg-bot">
+      <p>Olá! Sou o Assistente Nexus 👋 Posso te ajudar com dúvidas rápidas sobre matrículas, notas, financeiro, documentos e portais. Em que posso ajudar?</p>
+    </div>
+    <div class="ia-msg ia-msg-bot ia-msg-chips">
+      <button type="button" class="ia-chip" data-pergunta="Quantos alunos temos?">Quantos alunos temos?</button>
+      <button type="button" class="ia-chip" data-pergunta="Como faço uma matrícula?">Como faço uma matrícula?</button>
+      <button type="button" class="ia-chip" data-pergunta="Como emitir um documento?">Como emitir um documento?</button>
+      <button type="button" class="ia-chip" data-pergunta="Qual a receita do mês?">Qual a receita do mês?</button>
+      <button type="button" class="ia-chip" data-pergunta="Falar com suporte">Falar com suporte</button>
+    </div>
+  </div>
+
+  <form id="ia-form" class="ia-form">
+    <input type="text" id="ia-input" placeholder="Digite sua pergunta..." autocomplete="off">
+    <button type="submit" id="ia-enviar" title="Enviar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </button>
+  </form>
+</div>
+
+<script src="js/qrcode.js"></script>
+<script src="js/neon-client.js"></script>
+<script>
+  // Busca global do topbar: envia o termo para a tela de Alunos e aplica lá.
+  document.addEventListener("DOMContentLoaded", function(){
+    const buscaTopo = document.getElementById("topbar-busca");
+    if(!buscaTopo) return;
+    buscaTopo.addEventListener("keydown", function(e){
+      if(e.key !== "Enter") return;
+      const termo = buscaTopo.value.trim();
+      if(!termo) return;
+      const btnAlunos = document.querySelector('.nav-item[data-view="alunos"]');
+      if(typeof irParaView === "function") irParaView("alunos", btnAlunos);
+      setTimeout(function(){
+        const campoBusca = document.getElementById("busca-aluno");
+        if(campoBusca){
+          campoBusca.value = termo;
+          campoBusca.dispatchEvent(new Event("input", { bubbles:true }));
+        }
+      }, 50);
+    });
+  });
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>

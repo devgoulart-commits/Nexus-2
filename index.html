@@ -16,6 +16,9 @@
 <link rel="icon" id="favicon-link" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" id="favicon-link-16" type="image/png" sizes="16x16" href="favicon-16.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script src="js/qrcode.lib.js"></script>
 </head>
@@ -354,6 +357,15 @@
       <span class="nav-texto" data-i18n="sidebar.instalarapp">Instalar app</span>
     </button>
 
+    <button type="button" id="sidebar-lgpd-card" class="sidebar-lgpd-card" onclick="irParaView('auditoria')" title="Ver auditoria de acessos e dados">
+      <span class="sidebar-lgpd-ico hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+      <span class="sidebar-lgpd-txt">
+        <strong data-i18n="sidebar.lgpd.titulo">LGPD</strong>
+        <span data-i18n="sidebar.lgpd.desc">Seus dados protegidos com total segurança</span>
+        <b class="sidebar-lgpd-link" data-i18n="sidebar.lgpd.veraudit">Ver auditoria →</b>
+      </span>
+    </button>
+
     <button id="btn-recolher-menu" class="btn-recolher-menu" title="Esconder menu">
       <span id="icone-recolher">«</span> <span class="nav-texto" data-i18n="sidebar.esconder">Esconder menu</span>
     </button>
@@ -408,6 +420,19 @@
         <span class="chip-data chip-unidade" id="chip-unidade"></span>
         <span class="chip-data" id="data-hoje"></span>
         <span class="chip-data chip-hora" id="chip-hora">🕐 --:--</span>
+        <div class="notif-wrap">
+          <button type="button" id="btn-notificacoes" class="btn-icone btn-notificacoes" title="Notificações">
+            <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 3.6-1 5.4-2 7h16c-1-1.6-2-3.4-2-7z"/><path d="M9.5 19a2.5 2.5 0 0 0 5 0"/></svg></span>
+            <span class="notif-badge oculto" id="notif-badge">0</span>
+          </button>
+          <div class="notif-painel oculto" id="painel-notificacoes">
+            <div class="notif-painel-cabeca">
+              <span data-i18n="notif.titulo">Notificações</span>
+              <button type="button" id="btn-marcar-lidas" class="notif-marcar-lidas" data-i18n="notif.marcarlidas">Marcar como lidas</button>
+            </div>
+            <div class="notif-lista" id="notif-lista"></div>
+          </div>
+        </div>
         <div class="notif-wrap">
           <button type="button" id="btn-suporte" class="btn-icone" title="Suporte: (31) 98304-7290">
             <span class="hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.7-2.5 2-2.5 4"/><path d="M12 17h.01"/></svg></span>

@@ -83,6 +83,8 @@ const TRADUCOES = {
     "sidebar.grupo.secretaria":"Secretaria", "sidebar.grupo.administracao":"Configurações",
     "sidebar.grupo.multiunidade":"Multiunidade",
     "sidebar.unidade":"Unidade:", "sidebar.sair":"Sair",
+    "sidebar.lgpd.titulo":"LGPD", "sidebar.lgpd.desc":"Seus dados protegidos com total segurança", "sidebar.lgpd.veraudit":"Ver auditoria →",
+    "notif.titulo":"Notificações", "notif.marcarlidas":"Marcar como lidas",
     "nav.unidades":"Sede e Filiais", "nav.usuariosunidade":"Usuários por Unidade", "nav.permissoesfuncao":"Permissões por Função",
     "nav.auditoria":"Auditoria de Ações", "nav.sessoes":"Controle de Sessões",
     "auditoria.info":"Registro cronológico das ações realizadas pelos usuários nesta sessão do sistema (criação, edição e exclusão de registros).",
@@ -256,6 +258,8 @@ const TRADUCOES = {
     "app.rodape.versao":"v2.0.0", "app.rodape.suporte":"Support", "app.rodape.privacidade":"Privacy Policy",
     "app.rodape.conectado":"Connected",
     "sidebar.esconder":"Hide menu",
+    "sidebar.lgpd.titulo":"Data Privacy", "sidebar.lgpd.desc":"Your data is fully protected", "sidebar.lgpd.veraudit":"View audit log →",
+    "notif.titulo":"Notifications", "notif.marcarlidas":"Mark as read",
     "sidebar.subtitulo":"Academic Management", "sidebar.slogan":"EDUCATION · PEOPLE.<br>FUTURE.",
     "sidebar.grupo.principal":"Main", "sidebar.grupo.academico":"Academic Management", "sidebar.grupo.matriculas":"Enrollments",
     "sidebar.grupo.pessoas":"People", "sidebar.grupo.escola":"School", "sidebar.grupo.documentos":"Documents",
@@ -403,6 +407,8 @@ const TRADUCOES = {
     "app.rodape.versao":"v2.0.0", "app.rodape.suporte":"Soporte", "app.rodape.privacidade":"Política de Privacidad",
     "app.rodape.conectado":"Conectado",
     "sidebar.esconder":"Ocultar menú",
+    "sidebar.lgpd.titulo":"LGPD", "sidebar.lgpd.desc":"Sus datos protegidos con total seguridad", "sidebar.lgpd.veraudit":"Ver auditoría →",
+    "notif.titulo":"Notificaciones", "notif.marcarlidas":"Marcar como leídas",
     "sidebar.subtitulo":"Gestión Académica", "sidebar.slogan":"ENSEÑANZA · PERSONAS.<br>FUTURO.",
     "sidebar.grupo.principal":"Principal", "sidebar.grupo.academico":"Gestión Académica", "sidebar.grupo.matriculas":"Matrículas",
     "sidebar.grupo.pessoas":"Personas", "sidebar.grupo.escola":"Escuela", "sidebar.grupo.documentos":"Documentos",
@@ -5358,12 +5364,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.getElementById("btn-suporte").addEventListener("click", (e) => {
     e.stopPropagation();
+    document.getElementById("painel-notificacoes").classList.add("oculto");
     document.getElementById("painel-suporte").classList.toggle("oculto");
+  });
+
+  // Sino de notificações (alertas inteligentes): abre o painel e zera o badge de não lidas
+  document.getElementById("btn-notificacoes").addEventListener("click", (e) => {
+    e.stopPropagation();
+    document.getElementById("painel-suporte").classList.add("oculto");
+    const painelNotif = document.getElementById("painel-notificacoes");
+    const abrindo = painelNotif.classList.contains("oculto");
+    painelNotif.classList.toggle("oculto");
+    if(abrindo){
+      NAO_LIDAS = 0;
+      renderNotificacoes();
+    }
+  });
+  document.getElementById("btn-marcar-lidas").addEventListener("click", (e) => {
+    e.stopPropagation();
+    NAO_LIDAS = 0;
+    renderNotificacoes();
   });
   document.addEventListener("click", (e) => {
     const painelSuporte = document.getElementById("painel-suporte");
-    if(painelSuporte && !painelSuporte.classList.contains("oculto") && !e.target.closest(".notif-wrap")){
-      painelSuporte.classList.add("oculto");
+    const painelNotif = document.getElementById("painel-notificacoes");
+    if(!e.target.closest(".notif-wrap")){
+      if(painelSuporte && !painelSuporte.classList.contains("oculto")) painelSuporte.classList.add("oculto");
+      if(painelNotif && !painelNotif.classList.contains("oculto")) painelNotif.classList.add("oculto");
     }
   });
 
